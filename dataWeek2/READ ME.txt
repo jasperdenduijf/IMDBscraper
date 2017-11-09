@@ -1,0 +1,8 @@
+To run this file, take the following actions:
+
+- Load the folder dataWeek2
+- Go to your folder in your terminal
+- In your terminal, run 'python -m SimpleHTTPServer 8080'
+- Open in your browser 'http://127.0.0.1:8080/DataWeek2.html'
+
+Made by Jasper den Duijf. Please contact him for more information.
