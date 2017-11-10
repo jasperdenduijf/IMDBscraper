@@ -75,16 +75,16 @@ function draw() {
 
 	// create graph
 	ctx.beginPath();
-    ctx.moveTo(xTransform(days[0]), yTransform(temperature[0]));
+	ctx.moveTo(xTransform(days[0]), yTransform(temperature[0]));
 	for(var i = 1; i < days.length; i++)
 	{
 		ctx.lineTo(xTransform(days[i]), yTransform(temperature[i+1]));
 	}
-    ctx.stroke();
+	ctx.stroke();
      
 	// create axes
 	ctx.beginPath();
-    ctx.moveTo(horizontalMarge, verticalMarge);
+	ctx.moveTo(horizontalMarge, verticalMarge);
 	ctx.lineTo(horizontalMarge, heightVar - verticalMarge);
 	ctx.lineTo(widthVar - horizontalMarge, heightVar - verticalMarge);
 	ctx.stroke();
@@ -109,7 +109,7 @@ function draw() {
 	
 	// put down y-as title
 	ctx.font = '12px serif';
-	ctx.fillText("\xB0C", horizontalMarge / 2, verticalMarge / 2);
+	ctx.fillText("Daggemiddelde in \xB0C", horizontalMarge / 2, verticalMarge / 2);
 	
 	
 	// create x-as marks
