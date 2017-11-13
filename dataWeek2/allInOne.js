@@ -162,7 +162,7 @@ xhttp.onreadystatechange = function() {
 		draw();
     }
   };
-xhttp.open("GET", "http://127.0.0.1:8080/rawdata.txt", true);
+xhttp.open("GET", "https://raw.githubusercontent.com/jasperdenduijf/IMDBscraper/master/dataWeek2/rawdata.txt", true);
 xhttp.send();
 
 
