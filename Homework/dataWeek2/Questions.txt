@@ -1,0 +1,16 @@
+Question 1; Explain the difference between the == operator and the === operator.
+	Both compare two variables. But the second one is stricter. The first one returns true for 0 == false, 
+	since they have roughly the same meaning, whilest the second one only has to be exactly the same. 
+	
+Question 2; Explain what a closure is. 
+	A closure has something to do with Javascript's ability to return functions and storing them as variables, which you can use later on.
+
+Question 3; Explain what higher order functions are.
+	Simply put: a higher order function is a function that uses other functions. 
+	This way you can build multiple layers and more abstract functions.
+	
+Question 4; Explain what a query selector is and give an example line of JavaScript that uses a query selector.
+	It is a useful way of searching and selecting certain part of a HTML-file.
+	as example "document.querySelectorAll("p").length" gives all <p> paragraph element.
+	
+	
