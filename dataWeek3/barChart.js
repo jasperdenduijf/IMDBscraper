@@ -128,4 +128,5 @@ function turnBlue(d,i){
 function type(d) {
   d.Rain = +d.Rain; 
   return d;
+};
 }
