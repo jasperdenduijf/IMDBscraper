@@ -1,3 +1,12 @@
+/*
+*  Data Processing, week 3
+*  Name: Jasper den Duijf
+*  Number: 10217584
+*  
+*  
+*/
+
+
 // this function creates the bar chart when the body is loaded
 
 function drawBarChart(){
