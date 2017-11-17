@@ -118,13 +118,8 @@ function turnRed(d,i){
 
 // this function changes the bar when 'untouched'
 function turnBlue(d,i){
-	// 
+	// change the color
 	d3.select(this).attr("fill", "steelblue");
+	// remove the text
 	chart.select("#barmm").remove();
-}
-
-function type(d) {
-  d.Rain = +d.Rain; // coerce to number
-  return d;
-}
 }
