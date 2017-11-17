@@ -123,3 +123,9 @@ function turnBlue(d,i){
 	// remove the text
 	chart.select("#barmm").remove();
 }
+
+// coerce to number
+function type(d) {
+  d.Rain = +d.Rain; 
+  return d;
+}
