@@ -3,7 +3,7 @@
 *  Name: Jasper den Duijf
 *  Number: 10217584
 *  
-*  
+*  See also: https://bost.ocks.org/mike/bar/3/
 */
 
 
