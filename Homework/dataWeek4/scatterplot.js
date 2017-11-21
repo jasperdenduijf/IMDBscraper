@@ -56,7 +56,7 @@ function scatterDraw(){
 	.append("text")
 		.attr("class", "label")
 		.attr("x", width)
-		.attr("y", -6)
+		.attr("y", -36)
 		.style("text-anchor", "end")
 		.text("Oosterlengte");
 
