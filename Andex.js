@@ -30,7 +30,7 @@ function animateDiv(){
 		.attr("y", 90)
 		.text("Week 4, legend")
 		.on("mouseover", move4a)
-		.on("click", function() { window.open("https://jasperdenduijf.github.io/IMDBscraper/Homework/dataWeek4/legend.html"); });
+		.on("click", function() { window.open("https://jasperdenduijf.github.io/IMDBscraper/Homework/dataWeek4/svg.html"); });
 
 	d3.select(".chart").append("text")
 		.attr("id", "week4b")
