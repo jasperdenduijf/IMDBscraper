@@ -110,7 +110,7 @@ function scatterDraw(){
 	d3.select("body")
 		.append("a")
 		.attr("href","https://en.wikipedia.org/wiki/List_of_European_countries_by_area")
-		.text("Source sizes");
+		.text("Source sizes  ");
 	
 	d3.select("body")
 		.append("a")
