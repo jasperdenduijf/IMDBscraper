@@ -114,7 +114,7 @@ function scatterDraw(){
 	
 	d3.select("body")
 		.append("a")
-		.attr("https://en.wikipedia.org/wiki/List_of_Eurovision_Song_Contest_winners")
+		.attr("href","https://en.wikipedia.org/wiki/List_of_Eurovision_Song_Contest_winners")
 		.text("Source ESC victories")
 	});
 	
