@@ -22,6 +22,25 @@ function animateDiv(){
 		.text("Week 3")
 		.on("mouseover", move3)
 		.on("click", function() { window.open("https://jasperdenduijf.github.io/IMDBscraper/Homework/dataWeek3/barchart.html"); });
+
+	d3.select(".chart").append("text")
+		.attr("id", "week4a")
+		.style("width", "300px")
+		.attr("x", 0)
+		.attr("y", 90)
+		.text("Week 4, legend")
+		.on("mouseover", move4a)
+		.on("click", function() { window.open("https://jasperdenduijf.github.io/IMDBscraper/Homework/dataWeek4/legend.html"); });
+
+	d3.select(".chart").append("text")
+		.attr("id", "week4b")
+		.style("width", "300px")
+		.attr("x", 0)
+		.attr("y", 120)
+		.text("Week 4, scatterplot")
+		.on("mouseover", move4b)
+		.on("click", function() { window.open("https://jasperdenduijf.github.io/IMDBscraper/Homework/dataWeek4/scatterplot.html"); });
+
 }
 
 function move2(){
@@ -41,6 +60,30 @@ function move3(){
 	newY = Math.random() * 400 + 30;
 	
 	d3.select(".chart").select("#week3")
+	.transition()
+	.attr("x", newX)
+	.attr("y", newY)
+	.ease('bounce')
+	.duration(3000);
+}
+
+function move4a(){
+	newX = Math.random() * 400 + 30;
+	newY = Math.random() * 400 + 30;
+	
+	d3.select(".chart").select("#week4a")
+	.transition()
+	.attr("x", newX)
+	.attr("y", newY)
+	.ease('bounce')
+	.duration(3000);
+}
+
+function move4b(){
+	newX = Math.random() * 400 + 30;
+	newY = Math.random() * 400 + 30;
+	
+	d3.select(".chart").select("#week4b")
 	.transition()
 	.attr("x", newX)
 	.attr("y", newY)
