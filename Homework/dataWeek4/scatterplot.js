@@ -56,11 +56,11 @@ function scatterDraw(){
 	.append("text")
 		.attr("class", "label")
 		.attr("x", width)
-		.attr("y", -36)
+		.attr("y", -6)
 		.style("text-anchor", "end")
 		.text("Oosterlengte");
 
-	// create the x-ax with a label
+	// create the y-ax with a label
 	svg.append("g")
 		.attr("class", "y axis")
 		.call(yAxis)
