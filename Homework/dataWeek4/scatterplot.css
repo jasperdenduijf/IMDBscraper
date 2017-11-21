@@ -1,0 +1,30 @@
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+  stroke: #000;
+}
+
+.countryName {
+	font: 18px sans-serif;
+	font-weight: bold;
+}
+
+h1 {
+	font: 20px calibri;
+	font-weight: bold;
+	margin-left: 360px;
+}
+
+h3 {
+	font: calibri;
+	margin-left: 250px;
+}
