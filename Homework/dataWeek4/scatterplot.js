@@ -107,7 +107,13 @@ function scatterDraw(){
 		.style("text-anchor", "end")
 		.text(function(d) { return d; });
 
+	d3.select("body")
+		.append("a")
+		.attr("href","https://en.wikipedia.org/wiki/List_of_European_countries_by_area")
+		.text("Source sizes")
 	});
+	
+	
 }
 
 // this function is called if the mouse is on a dot
