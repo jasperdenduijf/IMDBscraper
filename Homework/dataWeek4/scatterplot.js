@@ -129,7 +129,7 @@ function showName(){
 		.attr("y", this["cy"].animVal.value + 10)
 		.attr("width", 50)
 		.attr("height", 50)
-		.text(this["id"]);
+		.html(this["id"]);
 		
 	d3.select("body").select("svg").append("text")
 		.attr("class", "surface")
@@ -137,7 +137,7 @@ function showName(){
 		.attr("y", this["cy"].animVal.value +25)
 		.attr("width", 50)
 		.attr("height", 50)
-		.text(Math.pow(this["r"].animVal.value, 2).round() + "m<sup>2</sup>");
+		.html(Math.pow(this["r"].animVal.value, 2).round() + "m<sup>2</sup>");
 		
 	
 }
