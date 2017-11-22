@@ -123,7 +123,7 @@ function scatterDraw(){
 // this function is called if the mouse is on a dot
 function showName(){
 	// create the country name
-	d3.select("body").select("svg").append("text")
+	d3.select("body").select("svg").append("div")
 		.attr("class", "countryName")
 		.attr("x", this["cx"].animVal.value + 10)
 		.attr("y", this["cy"].animVal.value + 10)
@@ -131,7 +131,7 @@ function showName(){
 		.attr("height", 50)
 		.html(this["id"]);
 		
-	d3.select("body").select("svg").append("text")
+	d3.select("body").select("svg").append("div")
 		.attr("class", "surface")
 		.attr("x", this["cx"].animVal.value + 10)
 		.attr("y", this["cy"].animVal.value +25)
