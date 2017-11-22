@@ -56,7 +56,7 @@ function scatterDraw(){
 	.append("text")
 		.attr("class", "label")
 		.attr("x", width)
-		.attr("y", -6)
+		.attr("y", 6)
 		.style("text-anchor", "end")
 		.text("Oosterlengte");
 
@@ -67,7 +67,7 @@ function scatterDraw(){
 	.append("text")
 		.attr("class", "label")
 		.attr("transform", "rotate(-90)")
-		.attr("y", 6)
+		.attr("y", -6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
 		.text("Noorderbreedte");
