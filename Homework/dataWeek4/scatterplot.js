@@ -28,7 +28,7 @@ function scatterDraw(){
 		.orient("left");
 
 	// create a svg canvas
-	var svg = d3.select("body").append("svg")
+	var svg = d3.select("body").select("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
@@ -119,8 +119,6 @@ function scatterDraw(){
 		.attr("href","https://en.wikipedia.org/wiki/List_of_Eurovision_Song_Contest_winners")
 		.text("Source ESC victories")
 	});
-	
-	
 }
 
 // this function is called if the mouse is on a dot
