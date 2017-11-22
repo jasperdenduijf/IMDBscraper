@@ -134,7 +134,7 @@ function showName(){
 	d3.select("body").select("svg").append("text")
 		.attr("class", "surface")
 		.attr("x", this["cx"].animVal.value + 10)
-		.attr("y", this["cy"].animVal.value -5)
+		.attr("y", this["cy"].animVal.value +25)
 		.attr("width", 50)
 		.attr("height", 50)
 		.text(Math.pow(this["r"].animVal.value, 2).round() + "m<sup>2</sup>");
