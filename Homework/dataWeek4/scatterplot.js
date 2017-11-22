@@ -137,7 +137,7 @@ function showName(){
 		.attr("y", this["cy"].animVal.value -5)
 		.attr("width", 50)
 		.attr("height", 50)
-		.text(Math.pow(this["r"].animVal.value, 2) + "m<sup>2</sup>");
+		.text(Math.pow(this["r"].animVal.value, 2).round() + "m<sup>2</sup>");
 		
 	
 }
