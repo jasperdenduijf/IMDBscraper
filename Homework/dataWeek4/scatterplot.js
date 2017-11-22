@@ -58,7 +58,7 @@ function scatterDraw(){
 		.attr("x", width)
 		.attr("y", 6)
 		.style("text-anchor", "end")
-		.text("Oosterlengte");
+		.text("Oosterlengte!");
 
 	// create the y-ax
 	svg.append("g")
@@ -70,7 +70,7 @@ function scatterDraw(){
 		.attr("y", -6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
-		.text("Noorderbreedte");
+		.text("Noorderbreedte!");
 
 
 	// create the dots
