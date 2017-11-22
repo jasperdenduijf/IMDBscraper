@@ -67,7 +67,7 @@ function scatterDraw(){
 	.append("text")
 		.attr("class", "label")
 		.attr("transform", "rotate(-90)")
-		.attr("y", -26)
+		.attr("y", -margin.left)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
 		.text("Noorderbreedte!");
