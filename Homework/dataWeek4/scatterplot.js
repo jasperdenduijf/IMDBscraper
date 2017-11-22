@@ -117,8 +117,6 @@ function scatterDraw(){
 		.attr("href","https://en.wikipedia.org/wiki/List_of_Eurovision_Song_Contest_winners")
 		.text("Source ESC victories")
 	});
-	
-	
 }
 
 // this function is called if the mouse is on a dot
