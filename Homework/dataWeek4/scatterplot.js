@@ -138,8 +138,6 @@ function showName(){
 		.attr("width", 50)
 		.attr("height", 50)
 		.html(Math.round(Math.pow(this["r"].animVal.value, 2)) + "m^2");
-		
-	
 }
 
 // this function is called if the mouse is removed from a dot
