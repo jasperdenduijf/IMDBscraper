@@ -41,6 +41,15 @@ function animateDiv(){
 		.on("mouseover", move4b)
 		.on("click", function() { window.open("https://jasperdenduijf.github.io/IMDBscraper/Homework/dataWeek4/scatterplot.html"); });
 
+	d3.select(".chart").append("text")
+		.attr("id", "week5")
+		.style("width", "300px")
+		.attr("x", 0)
+		.attr("y", 120)
+		.text("Week5")
+		.on("mouseover", move5)
+		.on("click", function() { window.open("https://jasperdenduijf.github.io/IMDBscraper/Homework/dataWeek5/linegraph.html"); });
+
 }
 
 function move2(){
@@ -84,6 +93,18 @@ function move4b(){
 	newY = Math.random() * 400 + 30;
 	
 	d3.select(".chart").select("#week4b")
+	.transition()
+	.attr("x", newX)
+	.attr("y", newY)
+	.ease('bounce')
+	.duration(3000);
+}
+
+function move5(){
+	newX = Math.random() * 400 + 30;
+	newY = Math.random() * 400 + 30;
+	
+	d3.select(".chart").select("#week5")
 	.transition()
 	.attr("x", newX)
 	.attr("y", newY)
