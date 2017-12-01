@@ -1,3 +1,10 @@
+/**
+* Jasper den Duijf, 10217584
+* Data processing, week 5
+*
+**/
+
+
 // this function creates a drop down menu
 function dropDown(){
 	// possible options
