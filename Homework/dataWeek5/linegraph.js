@@ -254,4 +254,10 @@ function draw(selectValue){
 			.attr("d", line(years(selectList[2], data)))
 			.style("stroke", colors[2]);
 	});
+	
+	d3.select(".link").remove()
+	d3.select("body")..append("a")
+			.attr("href","https://www.ag-ai.nl/")
+			.attr("class","link")
+			.text("Source");
 };
