@@ -256,7 +256,7 @@ function draw(selectValue){
 	});
 	
 	d3.select(".link").remove()
-	d3.select("body")..append("a")
+	d3.select("body").append("a")
 			.attr("href","https://www.ag-ai.nl/")
 			.attr("class","link")
 			.text("Source");
