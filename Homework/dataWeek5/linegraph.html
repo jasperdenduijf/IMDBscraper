@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
@@ -34,4 +35,42 @@ h1 {
 <select></select><h1> Male mortality rates in the Netherlands</h1><br>
 <svg width="1040" height="500"></svg>
 </body>
+=======
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<style>
+
+.axis--x path {
+  display: none;
+}
+
+.axis--y path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+h1 {
+	font: 20px calibri;
+	font-weight: bold;
+	margin-left: 360px;
+}
+
+</style>
+
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="linegraph.js"></script>
+</head>
+<body onload="dropDown(); draw('Male');">
+<select></select><h1> Male mortality rates in the Netherlands</h1><br>
+<svg width="1040" height="500"></svg>
+</body>
+>>>>>>> b29bb52108a18d87f4ccd779084c53d19db6d936
 </html>
