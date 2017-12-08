@@ -3,6 +3,9 @@
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="http://d3js.org/queue.v1.min.js"></script>
 	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="linkedView.js"></script>
 	<!--<link rel="stylesheet"  href="scatterplot.css"></script>-->
 <style>	
@@ -21,15 +24,16 @@
 		stroke-width: 1;
 		shape-rendering: crispEdges;
 	}
+	
+	#ex1Slider .slider-selection {
+	background: #BABABA;
+	}
 </style>
 </head>
 
 <body onload= loadBoth();>
 	<div> Jasper den Duijf</div>
-	<form name="myform" onSubmit=handleClick()>
-            <input name="Submit"  type="submit" value="Choose a year" >
-            <input type="text" id="myVal" placeholder="2002 - 2016">
-	</form>
+	<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="2002" data-slider-max="2016" data-slider-step="1" data-slider-value="2015"/>
 	<select></select><br>
 	<svg class="map"></svg>
 	<svg class="lineChart"></svg>

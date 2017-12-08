@@ -20,6 +20,12 @@ function initiate(){
 		.data(data).enter()
 		.append('option')
 			.text(function (d) { return d; });	
+			
+	$('#ex1').slider({
+		formatter: function(value) {
+			return 'Current value: ' + value;
+		}
+	});
 }
 
 function onchange() {
@@ -124,7 +130,22 @@ function drawNederland(nld){
 			return d.properties.name;
 		})
 		.on("click",chooseProvince)
-		.on("mouseover", showDetails);	
+		.on("mouseover", showDetails);
+		
+	var lineData = [ { "x": 172,   "y": 92},  { "x": 180,  "y": 100},
+		{ "x": 181,  "y": 110}, { "x": 188,  "y": 115},
+		{ "x": 182,  "y": 130}, { "x": 180, "y": 150}, { "x": 200, "y": 140}, 
+		{ "x": 205, "y": 115}, { "x": 210, "y": 120}, { "x": 215, "y": 100}, 
+		{ "x": 215, "y": 90}, { "x": 200, "y": 70}];	
+		
+	var lineFunction = d3.svg.line()
+		.x(function(d) { return d.x; })
+		.y(function(d) { return d.y; })
+		.interpolate("basis");
+		
+	svg.append("path")
+	.attr("d", lineFunction(lineData))
+	.attr("fill", "white");
 }
 
 function lineChart(){
@@ -182,17 +203,28 @@ function lineChart(){
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")")
 		.call(xAxis);
-
+	
+	var data = ["RainAmmount", "RainTime", "Temp"],
+	translation = ["hoeveelheid regen", "aantal uren regen", "gemiddelde temperatuur"],
+	ylabels = ["Etmaalsom van de neerslag (0.1 mm)", "Duur van de neerslag (0.1 uur)", "Gemiddelde temperatuur (0.1" + String.fromCharCode(176) + "Celsius)"],
+	words = translation[data.indexOf(typeData)],
+	ylabel = ylabels[data.indexOf(typeData)];
+	
 	// Add the Y Axis
 	svg.append("g")
 		.attr("class", "y axis")
-		.call(yAxis);
-		
+		.call(yAxis)
+		.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("x", -213)
+		.attr("y", -40)
+		.text(ylabel)
+	
 	svg.append("text")
 		.attr("x", 250)
 		.attr("y", 0)
 		.attr("class","titleLineChart")
-		.html(province)
+		.html("De " + words + " in " + province + " in " + datetype[0].substring(0,4))
 }
 
 function chooseProvince(){
@@ -223,7 +255,7 @@ function showDetails(){
 		.append("rect")
 		.attr("x",490)
 		.attr("y",280)
-		.attr("width", 140)
+		.attr("width", 160)
 		.attr("height",60)
 		.attr("stroke", "red")
 		.attr("fill", "white")
