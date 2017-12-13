@@ -16,7 +16,7 @@ var globalData = [],
 	answers = ["2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"],
 	datetype = ["20150101", "20160101"];
 
-// all data is transformed in this way	
+// all dates is transformed in this way	
 var parseDate = d3.time.format("%Y%m%d").parse;
 
 // load all json files and wait till loaded
