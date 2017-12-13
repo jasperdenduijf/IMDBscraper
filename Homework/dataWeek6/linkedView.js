@@ -1,102 +1,113 @@
+/*
+* Jasper den Duijf, 10217584
+* Data Processing - week 6/7
+*
+* Creates interactive charts  with multiple variables.
+*
+*/
+
+
+// all global used variables and their default values.
 var globalData = [],
-	linkage = []
-	province = "Utrecht",
-	station = 328,
-	typeData = "RainAmmount",
+	linkage = [],
+	province = "Groningen",
+	station = 286,
+	typeData = "RainAmount",
 	answers = ["2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"],
 	datetype = ["20150101", "20160101"];
 
+// all data is transformed in this way	
+var parseDate = d3.time.format("%Y%m%d").parse;
 
-function initiate(){
-	var data = ["RainAmmount", "RainTime", "Temp"];
-	
-	var select = d3.select('body')
-	.select('select')
-		.attr('class','select')
-		.on('change',onchange)
-	
-	var options = select
-	.selectAll('option')
-		.data(data).enter()
-		.append('option')
-			.text(function (d) { return d; });	
-			
-	$('#ex1').slider({
-		formatter: function(value) {
-			return 'Current value: ' + value;
-		}
-	});
-}
-
-function onchange() {
-		selectValue = d3.select('select').property('value')
-		typeData = selectValue;
-		lineChart();
-}
-
-function handleClick(){
-	console.log("Wacht!")
-	console.log(document.getElementById("myVal").value)
-	console.log(answers)
-	year = document.getElementById("myVal").value
-	console.log(year)
-	sleep(2000)
-	
-	for(var i = 0; i < answers.length; i++){
-		sleep(1000)
-		if(year == answers[i]){
-			datetype = [year + "0101", (parseInt(year) + 1) + "0101" ]
-			console.log(datetype)
-			sleep(1000)
-			console.log("En we wachten op...")
-			sleep(1000)
-			console.log("Pizza!")
-			lineChart()
-			sleep(2000)
-			console.log("Ooohh... Pizza!")
-			sleep(10000)
-		}
-		console.log(answers[i])
-	}
-	sleep(5000)
-}
-
+// load all json files and wait till loaded
 function loadBoth(){
 	queue()
 		.defer(d3.json, 'provincies.json')
 		.defer(d3.json, 'weather.json')
 		.defer(d3.json, "nld.json")
 		.defer(d3.json, "provincies.json")
-		.await(aab);
+		.await(startSite);
 }
 
-function aab(error, dP, dW, nld, provincies){
+// when all data is loaded
+function startSite(error, dP, dW, nld, provincies){
+	// check for errors
 	if (error) throw error;
-	drawNederland(nld)
 	
+	// start all one time calculations up front
 	initiate()
 	
-	// Parse the date / time
-	var parseDate = d3.time.format("%Y%m%d").parse;
+	// draw the map
+	drawNederland(nld)
 	
+	// prepares the weather data
+	var parseDate = d3.time.format("%Y%m%d").parse;
 	dW.forEach(function(d) {
 		d.Date = parseDate((d.Date).toString());
 		d.RainTime = +d.RainTime;
-		d.RainAmmount = +d.RainAmmount;
+		d.RainAmount = +d.RainAmount;
 		d.Temp = +d.Temp;
 	});
 	
+	// push the data globally
 	globalData = dW
 	linkage = provincies
-	station = 286;
-	lineChart(dW, station)
 	
+	// plot the linechart
+	lineChart()	
 }
 
+// start one time only calculations
+function initiate(){
+	// three options for the data
+	var data = ["RainAmount", "RainTime", "Temp"];
+	
+	// activates the dropdown menu when changed
+	var select = d3.select('body')
+	.select('select')
+		.attr('class','select')
+		.on('change',onchange)
+	
+	// shows the three options in the dropdown menu
+	var options = select
+	.selectAll('option')
+		.data(data).enter()
+		.append('option')
+			.text(function (d) { return d; });	
+	
+	// initialize the slider
+	var slider = document.getElementById("myRange");
+		
+	// put the year into a timeformat interval
+	datetype = [slider.value + "0101", (parseInt(slider.value) + 1).toString() + "0101"]
+	
+	// show the year
+	var output = document.getElementById("demo");
+	output.innerHTML = slider.value;
+	
+	// whenever the slider is changed, update the year and plot the graph
+	slider.oninput = function() {
+		datetype = [slider.value + "0101", (parseInt(slider.value) + 1).toString() + "0101"]
+		output.innerHTML = slider.value;
+		lineChart()
+	}
+}
+
+// plot the map
 function drawNederland(nld){
 	var width = 800,
 		height = 400;
+		
+	var svg = d3.select("body").select(".map")
+		.attr("width", width)
+		.attr("height", height);
+
 	
+	/*
+	* The following code is partially from http://bl.ocks.org/phil-pedruco/9344373
+	* It's function is to draw the path of the provinces properly
+	*/
+		
 	var colour = d3.scale.category20();
 	
 	var projection = d3.geo.mercator()
@@ -105,10 +116,6 @@ function drawNederland(nld){
 	
 	var path = d3.geo.path()
 		.projection(projection);
-	
-	var svg = d3.select("body").select(".map")
-		.attr("width", width)
-		.attr("height", height);
 	
 	var l = topojson.feature(nld, nld.objects.subunits).features[3],
 		b = path.bounds(l),
@@ -129,57 +136,57 @@ function drawNederland(nld){
 		.attr("class", function(d, i) {
 			return d.properties.name;
 		})
-		.on("click",chooseProvince)
+		// gives each province two actions
+		.on("click", chooseProvince)
 		.on("mouseover", showDetails);
-		
+	
+	// path for the IJsselmeer
 	var lineData = [ { "x": 172,   "y": 92},  { "x": 180,  "y": 100},
 		{ "x": 181,  "y": 110}, { "x": 188,  "y": 115},
 		{ "x": 182,  "y": 130}, { "x": 180, "y": 150}, { "x": 200, "y": 140}, 
 		{ "x": 205, "y": 115}, { "x": 210, "y": 120}, { "x": 215, "y": 100}, 
 		{ "x": 215, "y": 90}, { "x": 200, "y": 70}];	
-		
+	
+	// plot the IJsselmeer
 	var lineFunction = d3.svg.line()
 		.x(function(d) { return d.x; })
 		.y(function(d) { return d.y; })
 		.interpolate("basis");
-		
 	svg.append("path")
-	.attr("d", lineFunction(lineData))
-	.attr("fill", "white");
+		.attr("d", lineFunction(lineData))
+		.attr("fill", "white");
 }
 
+// plot the line chart
 function lineChart(){
 	
+	// remove the previous line chart
 	d3.select(".lineGraph").remove()
-	console.log(station)
 	
-	var parseDate = d3.time.format("%Y%m%d").parse;
-	console.log(datetype)
 	data = globalData.filter(function(d) { return d.Station == station && d.Date > parseDate(datetype[0]) && d.Date < parseDate(datetype[1]) })
 	
-
-	// Set the dimensions of the canvas / graph
+	// set the dimensions of the canvas / graph
 	var margin = {top: 30, right: 20, bottom: 30, left: 50},
 		width = 1200 - margin.left - margin.right,
 		height = 270 - margin.top - margin.bottom;
 	
-	// Set the ranges
+	// set the ranges
 	var x = d3.time.scale().range([0, width]);
 	var y = d3.scale.linear().range([height, 0]);
 	
-	// Define the axes
+	// define the axes
 	var xAxis = d3.svg.axis().scale(x)
 		.orient("bottom").ticks(5);
 	
 	var yAxis = d3.svg.axis().scale(y)
 		.orient("left").ticks(5);
 	
-	// Define the line
+	// define the line
 	var valueline = d3.svg.line()
 		.x(function(d) { return x(Number(d.Date)); })
 		.y(function(d) { return y(Number(d[typeData])); });
 		
-	// Adds the svg canvas
+	// adds the svg canvas
 	var svg = d3.select("body")
 		.append("svg")
 		.attr("class","lineGraph")
@@ -189,28 +196,30 @@ function lineChart(){
 			.attr("transform", 
 				"translate(" + margin.left + "," + margin.top + ")");
 	
-	// Scale the range of the data
+	// scale the range of the data
 	x.domain(d3.extent(data, function(d) { return d.Date; }));
-	y.domain([0, d3.max(data, function(d) { return d[typeData]; })]);
+	y.domain([d3.min(data, function(d) { return d[typeData]; }), 
+		d3.max(data, function(d) { return d[typeData]; })]);
 
-	// Add the valueline path.
+	// add the valueline path.
 	svg.append("path")
 		.attr("class", "line")
 		.attr("d", valueline(data));
 
-	// Add the X Axis
+	// add the X Axis
 	svg.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")")
 		.call(xAxis);
 	
-	var data = ["RainAmmount", "RainTime", "Temp"],
-	translation = ["hoeveelheid regen", "aantal uren regen", "gemiddelde temperatuur"],
-	ylabels = ["Etmaalsom van de neerslag (0.1 mm)", "Duur van de neerslag (0.1 uur)", "Gemiddelde temperatuur (0.1" + String.fromCharCode(176) + "Celsius)"],
-	words = translation[data.indexOf(typeData)],
-	ylabel = ylabels[data.indexOf(typeData)];
+	// check the data type and picks the right lables and title
+	var data = ["RainAmount", "RainTime", "Temp"],
+		translation = ["De hoeveelheid regen", "Het aantal uren regen", "De gemiddelde temperatuur"],
+		ylabels = ["Etmaalsom van de neerslag (0.1 mm)", "Duur van de neerslag (0.1 uur)", "Gemiddelde temperatuur (0.1" + String.fromCharCode(176) + "Celsius)"],
+		words = translation[data.indexOf(typeData)],
+		ylabel = ylabels[data.indexOf(typeData)];
 	
-	// Add the Y Axis
+	// add the Y Axis
 	svg.append("g")
 		.attr("class", "y axis")
 		.call(yAxis)
@@ -220,18 +229,27 @@ function lineChart(){
 		.attr("y", -40)
 		.text(ylabel)
 	
+	// add the title with the proper words
 	svg.append("text")
 		.attr("x", 250)
-		.attr("y", 0)
+		.attr("y", -10)
 		.attr("class","titleLineChart")
-		.html("De " + words + " in " + province + " in " + datetype[0].substring(0,4))
+		.html(words + " in " + province + " in " + datetype[0].substring(0,4))
 }
 
+
+// the dropdown menu changes the datatype and plots the linegraph again
+function onchange() {
+		selectValue = d3.select('select').property('value')
+		typeData = selectValue;
+		lineChart();
+}
+
+// the map changes the line graph
 function chooseProvince(){
 	province = d3.select(this).attr("class")
 	
-	console.log(globalData)
-	
+	// if the data for this province exist, plot a new line graph
 	linkage.forEach(function(d) {
 		if(d.Provincie == province){
 			station = d.Station
@@ -240,46 +258,45 @@ function chooseProvince(){
 	})
 }
 
-function sleep(miliseconds) {
-   var currentTime = new Date().getTime();
-
-   while (currentTime + miliseconds >= new Date().getTime()) {
-   }
-}
-
+// creates a info box about a province
 function showDetails(){
-	d3.selectAll(".infokader").remove()
+	// remove the previous info box
+	d3.selectAll(".infobox").remove()
+	
+	// select the province
 	province = d3.select(this).attr("class")
 	
+	// add a new box
 	d3.select("svg")
 		.append("rect")
 		.attr("x",490)
 		.attr("y",280)
 		.attr("width", 160)
 		.attr("height",60)
-		.attr("stroke", "red")
+		.attr("class", "infobox")
+		.attr("stroke", "black")
 		.attr("fill", "white")
-		
+	
+	// find the right information and put it in the box
 	linkage.forEach(function(d) {
 		if(d.Provincie == province){
 			d3.select("svg").append("text")
-			.attr("class", "infokader")
+			.attr("class", "infobox")
 			.attr("x", 500)
 			.attr("y", 330)
 			.text("Station: " + d.Station)
 			
 			d3.select("svg").append("text")
-			.attr("class", "infokader")
+			.attr("class", "infobox")
 			.attr("x", 500)
 			.attr("y", 300)
 			.text("Provincie: " + d.Provincie)
 			
 			d3.select("svg").append("text")
-			.attr("class", "infokader")
+			.attr("class", "infobox")
 			.attr("x", 500)
 			.attr("y", 315)
 			.text("Stad: " + d.Stad)			
 		};
-	})
-	
+	})	
 }

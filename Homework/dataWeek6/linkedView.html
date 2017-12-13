@@ -1,41 +1,18 @@
 <!DOCTYPE html>
 <head>
+	<!-- Jasper den Duijf, Data Processing Week 6-->
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 	<script src="https://d3js.org/queue.v1.min.js"></script>
 	<script src="https://d3js.org/topojson.v1.min.js"></script>
 
 	<script src="linkedView.js"></script>
-	<!--<link rel="stylesheet"  href="scatterplot.css"></script>-->
-<style>	
-	body { font: 12px Arial;}
-	
-	.line { 
-		stroke: steelblue;
-		stroke-width: 2;
-		fill: none;
-	}
-	
-	.axis path,
-	.axis line {
-		fill: none;
-		stroke: grey;
-		stroke-width: 1;
-		shape-rendering: crispEdges;
-	}
-	
-	#ex1Slider .slider-selection {
-	background: #BABABA;
-	}
-</style>
+	<link rel="stylesheet"  href="linkedView.css"></script>
 </head>
 
 <body onload= loadBoth();>
-	<div> Jasper den Duijf</div>
-	<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="2002" data-slider-max="2016" data-slider-step="1" data-slider-value="2015"/>
+	<div> Jasper den Duijf</div><span id="demo"></span>
+	<input type="range" min="2002" max="2016" value="2015" id="myRange">
 	<select></select><br>
 	<svg class="map"></svg>
 	<svg class="lineChart"></svg>
