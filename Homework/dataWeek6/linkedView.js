@@ -38,7 +38,7 @@ function startSite(error, dP, dW, nld, provincies){
 	initiate()
 	
 	// draw the map
-	drawNederland(nld)
+	drawNetherlands(nld)
 	
 	// prepares the weather data
 	var parseDate = d3.time.format("%Y%m%d").parse;
@@ -94,7 +94,7 @@ function initiate(){
 }
 
 // plot the map
-function drawNederland(nld){
+function drawNetherlands(nld){
 	var width = 800,
 		height = 400;
 		
@@ -155,6 +155,7 @@ function drawNederland(nld){
 	svg.append("path")
 		.attr("d", lineFunction(lineData))
 		.attr("fill", "white");
+		
 }
 
 // plot the line chart
