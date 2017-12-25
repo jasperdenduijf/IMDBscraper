@@ -24,6 +24,10 @@ function startQuiz(){
 		.delay(4000)
 		.duration(1000)
 		.text("Do you want to play a game?")
+		.transition()
+		.delay(8000)
+		.duration(1000)
+		.text("Answer my questions first!")
 				
 	showStart()
 }
@@ -143,7 +147,7 @@ function gameTwo(){
 		.attr('y', 50)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto1-3.jpg")
+		.attr("xlink:href", "foto1-3.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -160,7 +164,7 @@ function gameTwo(){
 		.attr('y', 50)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto2-3.jpg")
+		.attr("xlink:href", "foto2-3.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -177,7 +181,7 @@ function gameTwo(){
 		.attr('y', 50)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto3-2.jpg")
+		.attr("xlink:href", "foto3-2.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -194,7 +198,7 @@ function gameTwo(){
 		.attr('y', 50)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto4-67.jpg")
+		.attr("xlink:href", "foto4-67.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -212,7 +216,7 @@ function gameTwo(){
 		.attr('y', 250)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto5-2.jpg")
+		.attr("xlink:href", "foto5-2.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -229,7 +233,7 @@ function gameTwo(){
 		.attr('y', 250)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto6-4.jpg")
+		.attr("xlink:href", "foto6-4.png")
 
 	d3.select("svg")
 		.append("text")
@@ -246,7 +250,7 @@ function gameTwo(){
 		.attr('y', 450)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto7-4.jpg")	
+		.attr("xlink:href", "foto7-4.png")	
 		
 	d3.select("svg")
 		.append("text")
@@ -263,7 +267,7 @@ function gameTwo(){
 		.attr('y', 450)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto8-2.jpg")
+		.attr("xlink:href", "foto8-2.png")
 		.on("click", gameThree)
 
 	d3.select("svg")
@@ -281,7 +285,7 @@ function gameTwo(){
 		.attr('y', 450)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto9-2.jpg")	
+		.attr("xlink:href", "foto9-2.png")	
 
 //BOEM!
 	d3.select("svg")
@@ -321,7 +325,7 @@ function gameOne(){
 		.attr("fill", "red")
 		.attr("font-size", "20px")
 		.attr("font-family", "sans-serif")
-		.text("What letter to click?")
+		.text("Which letter to click?")
 		.attr("opacity", 1)
 		.transition()
 		.delay(2000)
@@ -451,7 +455,7 @@ function gameThree(){
 		.attr('y', 450)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto8-2.jpg")
+		.attr("xlink:href", "foto8-2.png")
 		.transition()
 		.attr('x', 400)
 		
@@ -657,8 +661,8 @@ function theEnd(){
 		.attr("font-size", "40px")
 		.attr("font-family", "sans-serif")
 		.attr("fill", "darkred")
-		.text("Ho ho ho Jasper")
-		.attr("transform", "translate(750,600) rotate(-30)")
+		.text(" Jasper")
+		.attr("transform", "translate(760,600) rotate(-30)")
 		.attr("opacity", 0)
 		.transition()
 		.delay(2000)
