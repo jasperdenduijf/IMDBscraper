@@ -147,7 +147,7 @@ function gameTwo(){
 		.attr('y', 50)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto1-3.png")
+		.attr("xlink:href", "Foto1-3.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -164,7 +164,7 @@ function gameTwo(){
 		.attr('y', 50)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto2-3.png")
+		.attr("xlink:href", "Foto2-3.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -181,7 +181,7 @@ function gameTwo(){
 		.attr('y', 50)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto3-2.png")
+		.attr("xlink:href", "Foto3-2.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -198,7 +198,7 @@ function gameTwo(){
 		.attr('y', 50)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto4-67.png")
+		.attr("xlink:href", "Foto4-67.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -216,7 +216,7 @@ function gameTwo(){
 		.attr('y', 250)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto5-2.png")
+		.attr("xlink:href", "Foto5-2.png")
 		
 	d3.select("svg")
 		.append("text")
@@ -233,7 +233,7 @@ function gameTwo(){
 		.attr('y', 250)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto6-4.png")
+		.attr("xlink:href", "Foto6-4.png")
 
 	d3.select("svg")
 		.append("text")
@@ -250,7 +250,7 @@ function gameTwo(){
 		.attr('y', 450)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto7-4.png")	
+		.attr("xlink:href", "Foto7-4.png")	
 		
 	d3.select("svg")
 		.append("text")
@@ -267,7 +267,7 @@ function gameTwo(){
 		.attr('y', 450)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto8-2.png")
+		.attr("xlink:href", "Foto8-2.png")
 		.on("click", gameThree)
 
 	d3.select("svg")
@@ -285,7 +285,7 @@ function gameTwo(){
 		.attr('y', 450)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto9-2.png")	
+		.attr("xlink:href", "Foto9-2.png")	
 
 //BOEM!
 	d3.select("svg")
@@ -455,7 +455,7 @@ function gameThree(){
 		.attr('y', 450)
 		.attr('width', 100)
 		.attr('height', 100)
-		.attr("xlink:href", "foto8-2.png")
+		.attr("xlink:href", "Foto8-2.png")
 		.transition()
 		.attr('x', 400)
 		
